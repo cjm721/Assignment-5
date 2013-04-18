@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/tvMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Cartoon Information"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/bDelete"
+        android:layout_width="85dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvMain"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp"
+        android:text="Delete" 
+        android:onClick="delete"/>
+
+    <Button
+        android:id="@+id/bDeleteAll"
+        android:layout_width="85dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/bDelete"
+        android:layout_alignBottom="@+id/bDelete"
+        android:layout_toRightOf="@+id/bDelete"
+        android:text="Delete All" 
+        android:onClick="deleteAll"/>
+
+    <Button
+        android:id="@+id/bAdd"
+        android:layout_width="85dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/bDelete"
+        android:layout_alignBottom="@+id/bDelete"
+        android:layout_toLeftOf="@+id/bDelete"
+        android:text="Add" 
+        android:onClick="add"/>
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bDelete"
+        android:layout_centerHorizontal="true" >
+    </ListView>
+
+</RelativeLayout>
