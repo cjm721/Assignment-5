@@ -43,9 +43,11 @@ public class Add extends Activity{
 		
 		if(Cartoon == null || Cartoon.equals("")){
 			displayDialog("Error", "Must enter a Cartoon");
+			((EditText)findViewById(R.id.editText1)).requestFocus();
 			return;
 		}else if (name == null || name.equals("")){
 			displayDialog("Error", "Must enter a Character");
+			((EditText)findViewById(R.id.etCharacter)).requestFocus();
 			return;
 		}else{
 			String statement = "INSERT INTO " + DataBase.database + 
@@ -53,8 +55,13 @@ public class Add extends Activity{
 					" VALUES (\"" + Cartoon + "\", \"" + name + "\", " + age + ")";
 			System.out.println(statement);
 			db.execSQL(statement);
-			((Spinner)findViewById(R.id.sAge)).setSelection(0);
+			
 			((EditText)findViewById(R.id.editText1)).requestFocus();
+			
+			((EditText)findViewById(R.id.editText1)).setText("");
+			((EditText)findViewById(R.id.etCharacter)).setText("");
+			((Spinner)findViewById(R.id.sAge)).setSelection(0);
+			
 			displayDialog("Success", "Character successfully added");
 		}
 		

@@ -11,7 +11,7 @@ public class Delete extends Activity{
 	
 	String cartoon;
 	String character;
-	int age;
+	String age;
 	SQLiteDatabase db;
 	
 	@Override
@@ -21,14 +21,13 @@ public class Delete extends Activity{
 		
 		db = DataBase.dbHelper.getWritableDatabase();
 		
-		cartoon = null; //getExtra
-		character = null; //getExtra
-		age = 0; //getExtra
+		cartoon = getIntent().getStringExtra("cartoon"); //getExtra
+		character = getIntent().getStringExtra("character"); //getExtra
+		age = getIntent().getStringExtra("age"); //getExtra
 		
 		((TextView)findViewById(R.id.CartoonName)).setText(cartoon);
 		((TextView)findViewById(R.id.CharacterName)).setText(character);
-		((TextView)findViewById(R.id.AgeNum)).setText(age);
-		
+		((TextView)findViewById(R.id.AgeNum)).setText(""+age);	
 	}
 
 	@Override
@@ -39,9 +38,10 @@ public class Delete extends Activity{
 	}
 	
 	public void delete(View v){
-		DataBase.dbHelper.getWritableDatabase().execSQL("DELETE FROM " + DataBase.database + " WHERE " +  + " AND " + " AND ")
-		//TODO:
-		
+		String statement = DataBase.cartoon_Column + "=? AND " + DataBase.character_Column + "=? AND " + DataBase.age_Column + "=?";
+		String[] args = {cartoon,character,age};
+		db.delete(DataBase.database, statement, args);
+		finish();
 	}
 	
 	public void cancel(View v){
